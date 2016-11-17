@@ -51,9 +51,9 @@
 - (void)
 viewWillAppear:(BOOL)animated
 {
-  [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:_configuration.navigationBarBackgroundColor]
+  [self.navigationController.navigationBar setBackgroundImage:[self imageWithColor:_configuration.navigationBarBackgroundColor]
                                                 forBarMetrics:UIBarMetricsDefault];
-  self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:_configuration.navigationBarBackgroundColor];
+  self.navigationController.navigationBar.shadowImage = [self imageWithColor:_configuration.navigationBarBackgroundColor];
   
   self.navigationController.navigationBar.hidden = NO;
   [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -281,4 +281,21 @@ viewWillAppear:(BOOL)animated
     }
 }
 
+
+// Orlando - 11/16/16
+- (UIImage *)
+imageWithColor:(UIColor *)color
+{
+  CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+  UIGraphicsBeginImageContext(rect.size);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  
+  CGContextSetFillColorWithColor(context, [color CGColor]);
+  CGContextFillRect(context, rect);
+  
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return image;
+}
 @end
