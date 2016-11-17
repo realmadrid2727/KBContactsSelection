@@ -15,6 +15,7 @@
     KBContactsSelectionConfiguration *configuration = [[KBContactsSelectionConfiguration alloc] init];
     
     configuration.tintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]; //iOS7 default blue
+  configuration.navigationBarBackgroundColor = [UIColor whiteColor];
     configuration.mode = KBContactsSelectionModeMessages;
     configuration.shouldShowNavigationBar = YES;
     configuration.selectButtonTitle = nil;

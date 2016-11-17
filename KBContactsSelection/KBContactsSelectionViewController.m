@@ -48,6 +48,22 @@
     [self _showAdditionalInfoViewAnimated:NO];
 }
 
+- (void)
+viewWillAppear:(BOOL)animated
+{
+  [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:_configuration.navigationBarBackgroundColor]
+                                                forBarMetrics:UIBarMetricsDefault];
+  self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:_configuration.navigationBarBackgroundColor];
+  
+  self.navigationController.navigationBar.hidden = NO;
+  [self.navigationController setNavigationBarHidden:NO animated:YES];
+  self.navigationItem.hidesBackButton = NO;
+  self.navigationController.navigationBar.barTintColor = _configuration.navigationBarBackgroundColor;
+  self.navigationController.navigationBar.backgroundColor = _configuration.navigationBarBackgroundColor;
+  self.navigationController.navigationBar.translucent = NO;
+  self.navigationController.extendedLayoutIncludesOpaqueBars = YES;
+}
+
 - (void)setAdditionalInfoView:(UIView *)additionalInfoView
 {
     if (additionalInfoView != _additionalInfoView) {
@@ -128,6 +144,17 @@
     self.navigationController.navigationBar.tintColor = _configuration.tintColor;
     _searchBar.tintColor = _configuration.tintColor;
     _tableView.sectionIndexColor = _configuration.tintColor;
+  
+  self.navigationController.navigationBar.barTintColor = _configuration.navigationBarBackgroundColor;
+  self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+  
+  self.navigationController.navigationBar.barTintColor = _configuration.navigationBarBackgroundColor;
+  
+  self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+  NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIColor whiteColor],NSForegroundColorAttributeName, nil];
+  [self.navigationController.navigationBar setTitleTextAttributes:navbarTitleTextAttributes];
+  self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 #pragma mark - UISearchBarDelegate

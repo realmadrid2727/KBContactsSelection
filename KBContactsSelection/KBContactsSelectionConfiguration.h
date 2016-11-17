@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, KBContactsSelectionMode) {
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, assign) BOOL shouldShowNavigationBar;
 @property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) UIColor *navigationBarBackgroundColor;
 
 /* Customize text/email content */
 @property (nonatomic, strong) NSString * messageBody;
